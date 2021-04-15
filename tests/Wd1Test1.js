@@ -1,15 +1,20 @@
-let {Builder} = require('selenium-webdriver');
-require('chromedriver')
+let { Builder } = require('selenium-webdriver');
+require('chromedriver');
 
-//open browser
-let driver = new Builder().forBrowser("chrome").build();
+(async function () {
 
-//navigate to url
-driver.get("https://opensource-demo.orangehrmlive.com/")
+    //open browser
+    let driver = await new Builder().forBrowser("chrome").build();
+    await driver.manage().setTimeouts({pageLoad:2000});
+    
+    //navigate to url
+    await driver.get("https://opensource-demo.orangehrmlive.com/")
 
-// get title of opened page
-let title = driver.getTitle();
-console.log(title);
+    // get title of opened page
+    let title = await driver.getTitle();
+    await console.log(title);
 
-//close browser
-driver.quit()
+    //close browser
+    await driver.quit()
+
+})();
