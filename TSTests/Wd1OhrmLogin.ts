@@ -1,4 +1,4 @@
-import {Builder, By, WebDriver} from "selenium-webdriver"
+import {Actions, Builder, By, WebDriver} from "selenium-webdriver"
 import "chromedriver"
 import "geckodriver"
 
@@ -24,6 +24,8 @@ import "geckodriver"
     //click on login
     await driver.findElement(By.id("btnLogin")).click();
 
+    await driver.sleep(1000);
+    
     //click on PIM link
     await driver.findElement(By.linkText("PIM")).click();
 
