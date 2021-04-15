@@ -1,5 +1,6 @@
-import {Builder, WebDriver} from "selenium-webdriver"
+import {Builder, By, WebDriver} from "selenium-webdriver"
 import "chromedriver"
+import "geckodriver"
 
 (async function () {
 
@@ -13,6 +14,30 @@ import "chromedriver"
     // get title of opened page
     let title:string = await driver.getTitle();
     await console.log(title);
+
+    //enter user name
+    await driver.findElement(By.name("txtUsername")).sendKeys("admin");
+
+    //enter password
+    await driver.findElement(By.id("txtPassword")).sendKeys("admin123");
+
+    //click on login
+    await driver.findElement(By.id("btnLogin")).click();
+
+    //click on PIM link
+    await driver.findElement(By.linkText("PIM")).click();
+
+    //click on add employee link
+    await driver.findElement(By.partialLinkText("Add Emp")).click();
+
+    //enter first name
+    await driver.findElement(By.id("firstName")).sendKeys("selenium");
+
+    //enter last name
+    await driver.findElement(By.id("lastName")).sendKeys("dev");
+    
+    //click on save
+    await driver.findElement(By.id("btnSave")).click();
 
     //close browser
     await driver.quit()
