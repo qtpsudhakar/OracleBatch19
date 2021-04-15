@@ -4,7 +4,7 @@ require('chromedriver');
 (async function () {
 
     //open browser
-    let driver = await new Builder().forBrowser("chrome").build();
+    let driver = await new Builder().forBrowser("chrome").build();    
     await driver.manage().setTimeouts({pageLoad:20000});
     
     //navigate to url
