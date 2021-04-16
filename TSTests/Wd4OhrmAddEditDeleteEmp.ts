@@ -77,6 +77,17 @@ import "geckodriver"
 
     await driver.sleep(2000);
 
+    let isElmFound=false;
+    while (isElmFound) {
+        let elmLst = await driver.findElements(By.xpath("//a[text()='"+empId+"']/../..//input"));
+        if (elmLst.length!=0) {
+            isElmFound=true;
+        }else{
+            await (await driver.findElement(By.xpath("//a[text()='Next']"))).click();
+        }
+    }
+
+    await driver.sleep(2000);
     await (await driver.findElement(By.xpath("//a[text()='"+empId+"']/../..//input"))).click();
 
     await (await driver.findElement(By.id("btnDelete"))).click();
