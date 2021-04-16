@@ -78,7 +78,7 @@ import "geckodriver"
     await driver.sleep(2000);
 
     let isElmFound=false;
-    while (isElmFound) {
+    while (!isElmFound) {
         let elmLst = await driver.findElements(By.xpath("//a[text()='"+empId+"']/../..//input"));
         if (elmLst.length!=0) {
             isElmFound=true;
